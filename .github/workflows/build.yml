@@ -97,18 +97,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: package
-          path: .
+          path: target
 
       # [Optionnel] Contrôle de la présence de l'artefact
       - name: Verify artifact presence
         run: |
           echo "Vérification de la présence de l'artefact..."
-          ls -la
-          if [ ! -f *.jar ]; then
-            echo "Erreur: Aucun fichier JAR trouvé!"
+          ls -la target/
+          if [ ! -f target/*.jar ]; then
+            echo "Erreur: Aucun fichier JAR trouvé dans target/!"
             exit 1
           fi
-          echo "Artefact JAR trouvé avec succès!"
+          echo "✅ Artefact JAR trouvé avec succès!"
+          echo "Fichier(s) trouvé(s):"
+          ls -lh target/*.jar
 
       # 4. Construction de l'image Docker
       - name: Build Docker image
@@ -126,7 +128,11 @@ jobs:
       # 6. Affichage du message de succès
       - name: Display success message
         run: |
+          echo "================================================"
           echo "BUILD ET PUSH RÉUSSIS!"
+          echo "================================================"
           echo "Image Docker créée et poussée avec succès:"
           echo "${{ secrets.DOCKERHUB_USER }}/api2026:latest"
+          echo "================================================"
           echo "L'image est maintenant disponible sur Docker Hub"
+          echo "================================================"
