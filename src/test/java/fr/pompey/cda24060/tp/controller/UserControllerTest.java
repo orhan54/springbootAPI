@@ -1,9 +1,6 @@
 package fr.pompey.cda24060.tp.controller;
 
 import fr.pompey.cda24060.tp.service.UserService;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
