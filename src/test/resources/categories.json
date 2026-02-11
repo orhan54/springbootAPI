@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Défauts de produit",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*AssertionError.*"
+  },
+  {
+    "name": "Défauts de test",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*NullPointerException.*"
+  },
+  {
+    "name": "Échecs de connexion DB",
+    "matchedStatuses": ["failed", "broken"],
+    "messageRegex": ".*SQLException.*"
+  },
+  {
+    "name": "Tests ignorés",
+    "matchedStatuses": ["skipped"]
+  }
+]
