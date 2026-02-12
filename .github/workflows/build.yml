@@ -122,9 +122,13 @@ jobs:
 
       # Push de l'image sur le Docker Hub
       - name: Push Docker image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKERHUB_USER }}/api2026:latest
-          docker push ${{ secrets.DOCKERHUB_USER }}/api2026:${{ github.sha }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+              ${{ secrets.DOCKERHUB_USER }}/api2026:latest
+              ${{ secrets.DOCKERHUB_USER }}/api2026:${{ github.sha }}
 
       # Affichage du message de succès
       - name: Display success message
